@@ -1,0 +1,3 @@
+rootProject.name = 'MyProjectBank'
+include 'internetBank'
+
