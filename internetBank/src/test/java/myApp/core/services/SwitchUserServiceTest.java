@@ -39,7 +39,7 @@ public class SwitchUserServiceTest {
         LogInResponse response = logInService.execute(request);
         SwitchUserRequest switchUserRequest = new SwitchUserRequest("01", "password");
         SwitchUserResponse switchUserResponse = switchUserService.execute(switchUserRequest);
-        assertNotEquals(switchUserResponse.getPersonalCode(), response.getPersonalCode());
-        assertFalse(response.hasErrors());
+        Assert.assertNotEquals(switchUserResponse.getPersonalCode(), response.getPersonalCode());
+        TestCase.assertFalse(response.hasErrors());
     }
 }

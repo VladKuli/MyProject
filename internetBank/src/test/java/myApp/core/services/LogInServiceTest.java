@@ -16,9 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static junit.framework.TestCase.*;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 @Ignore
@@ -37,49 +35,49 @@ public class LogInServiceTest {
     @Test
     public void testSuccessLogIn() {
         LogInRequest request = new LogInRequest("111-111", "password");
-        when(validator.validate(request)).thenReturn(List.of());
-        when(userService.logIn("111-111", "password")).thenReturn(true);
+        Mockito.when(validator.validate(request)).thenReturn(List.of());
+        Mockito.when(userService.logIn("111-111", "password")).thenReturn(true);
         LogInResponse response = service.execute(request);
-        assertFalse(response.hasErrors());
-        verify(userService).logIn("111-111", "password");
-        assertEquals("111-111", response.getPersonalCode());
+        TestCase.assertFalse(response.hasErrors());
+        Mockito.verify(userService).logIn("111-111", "password");
+        TestCase.assertEquals("111-111", response.getPersonalCode());
     }
 
     @Test
     public void testShouldReturnPersonalCodeError() {
         LogInRequest request = new LogInRequest(null, "password");
-        when(validator.validate(request)).thenReturn(List.of(new CoreError("Personal code",
+        Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Personal code",
                 "Personal code may contains only numbers and cannot be empty")));
         LogInResponse response = service.execute(request);
-        assertTrue(response.hasErrors());
-        assertEquals("Personal code", response.getErrors().get(0).getField());
-        assertEquals("Personal code may contains only numbers and cannot be empty",
+        TestCase.assertTrue(response.hasErrors());
+        TestCase.assertEquals("Personal code", response.getErrors().get(0).getField());
+        TestCase.assertEquals("Personal code may contains only numbers and cannot be empty",
                 response.getErrors().get(0).getMessage());
     }
 
     @Test
     public void testShouldReturnPasswordError() {
         LogInRequest request = new LogInRequest("111-111", null);
-        when(validator.validate(request)).thenReturn(List.of(new CoreError("Password",
+        Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Password",
                 "cannot be empty")));
         LogInResponse response = service.execute(request);
-        assertTrue(response.hasErrors());
-        assertEquals("Password", response.getErrors().get(0).getField());
-        assertEquals("cannot be empty", response.getErrors().get(0).getMessage());
+        TestCase.assertTrue(response.hasErrors());
+        TestCase.assertEquals("Password", response.getErrors().get(0).getField());
+        TestCase.assertEquals("cannot be empty", response.getErrors().get(0).getMessage());
     }
 
     @Test
     public void testShouldReturnPersonalCodeAndPasswordErrors() {
         LogInRequest request = new LogInRequest(null, null);
-        when(validator.validate(request)).thenReturn(List.of(new CoreError("Password",
+        Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Password",
                 "cannot be empty"), new CoreError("Personal code",
                 "Personal code may contains only numbers and cannot be empty")));
         LogInResponse response = service.execute(request);
-        assertTrue(response.hasErrors());
-        assertEquals("Personal code", response.getErrors().get(1).getField());
-        assertEquals("Personal code may contains only numbers and cannot be empty",
+        TestCase.assertTrue(response.hasErrors());
+        TestCase.assertEquals("Personal code", response.getErrors().get(1).getField());
+        TestCase.assertEquals("Personal code may contains only numbers and cannot be empty",
                 response.getErrors().get(1).getMessage());
-        assertEquals("Password", response.getErrors().get(0).getField());
-        assertEquals("cannot be empty", response.getErrors().get(0).getMessage());
+        TestCase.assertEquals("Password", response.getErrors().get(0).getField());
+        TestCase.assertEquals("cannot be empty", response.getErrors().get(0).getMessage());
     }
 }

@@ -13,9 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static junit.framework.TestCase.*;
-import static org.mockito.Mockito.*;
-
 @RunWith(MockitoJUnitRunner.class)
 public class OpenAccountServiceTest {
 
@@ -29,22 +26,22 @@ public class OpenAccountServiceTest {
     @Test
     public void testSuccessOpenAccount() {
         OpenAccountRequest request = new OpenAccountRequest("000000-00001");
-        when(validator.validate(request)).thenReturn(List.of());
+        Mockito.when(validator.validate(request)).thenReturn(List.of());
         OpenAccountResponse response = service.execute(request);
-        verify(bankAccountRepository,times(0)).openAccount("000000-00001");
+        Mockito.verify(bankAccountRepository, Mockito.times(0)).openAccount("000000-00001");
     }
 
     @Test
     public void testShouldReturnPersonalCodeError() {
         OpenAccountRequest request = new OpenAccountRequest(null);
-        when(validator.validate(request)).thenReturn(List.of(new CoreError("Field: Personal code",
+        Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Field: Personal code",
                 "Personal code must not be empty")));
         OpenAccountResponse response = service.execute(request);
-        assertTrue(response.hasErrors());
-        assertFalse(response.isCompleted());
-        verify(bankAccountRepository,times(0)).openAccount(null);
-        assertEquals("Field: Personal code",response.getErrors().get(0).getField());
-        assertEquals("Personal code must not be empty", response.getErrors().get(0).getMessage());
+        TestCase.assertTrue(response.hasErrors());
+        TestCase.assertFalse(response.isCompleted());
+        Mockito.verify(bankAccountRepository, Mockito.times(0)).openAccount(null);
+        TestCase.assertEquals("Field: Personal code",response.getErrors().get(0).getField());
+        TestCase.assertEquals("Personal code must not be empty", response.getErrors().get(0).getMessage());
 
     }
 }

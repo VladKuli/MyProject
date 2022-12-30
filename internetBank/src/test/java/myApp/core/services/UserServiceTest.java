@@ -1,8 +1,8 @@
 package myApp.core.services;
 /*
-import myApp.core.database.UserRepository;
-import myApp.core.domain.User;
-import myApp.core.services.authentication.UserService;
+import myApp.myApp.core.database.UserRepository;
+import myApp.myApp.core.domain.User;
+import myApp.myApp.core.services.authentication.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

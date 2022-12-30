@@ -56,6 +56,6 @@ public class AcceptanceTest1 {
                     "000000-00001");
             addService.execute(bankAccountTwo);
             GetAllBankAccountsResponse response = getAllBankAccountsServiceService.execute(new GetAllBankAccountsRequest());
-            assertEquals(1, response.getBankAccounts().size());
+            Assert.assertEquals(1, response.getBankAccounts().size());
         }
     }

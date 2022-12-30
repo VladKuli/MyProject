@@ -5,7 +5,6 @@ import myApp.core.requests.AddUserRequest;
 import myApp.core.responses.CoreError;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -20,6 +19,6 @@ public class AddUserValidatorTest {
     public void testShouldReturnErrorAboutName() {
         AddUserRequest request = new AddUserRequest("", "");
         List<CoreError> errors = validator.validate(request);
-        assertEquals("Field: Personal code ", errors.get(0).getField());
+        TestCase.assertEquals("Field: Personal code ", errors.get(0).getField());
     }
 }

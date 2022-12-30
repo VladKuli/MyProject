@@ -14,7 +14,6 @@ import java.util.Optional;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -30,9 +29,9 @@ public class SeeYourAccountServiceTest {
         SeeYourAccountRequest request = new SeeYourAccountRequest("0000000-00001");
         Optional<BankAccount> bankAccount = Optional.of(new BankAccount(
                 "Example", "ExampleTwo","000000-00001",0));
-        when(bankAccountRepository.seeYourAccount("0000000-00001")).thenReturn(bankAccount);
+        Mockito.when(bankAccountRepository.seeYourAccount("0000000-00001")).thenReturn(bankAccount);
         SeeYourAccountResponse response = service.execute(request);
-        assertFalse(response.hasErrors());
-        verify(bankAccountRepository).seeYourAccount("0000000-00001");
+        TestCase.assertFalse(response.hasErrors());
+        Mockito.verify(bankAccountRepository).seeYourAccount("0000000-00001");
     }
 }

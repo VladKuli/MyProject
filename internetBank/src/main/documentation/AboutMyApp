@@ -1,2 +1,19 @@
-    Моя идея - интернет банк, потому что мне кажется это интересная тема и я бы хотел попробовать
-реализовать эту идею.
+My idea is Internet Bank
+
+This Bank has the following features:
+
+user features:
+remittance
+take a loan
+open account
+close account
+view account balance
+---------------------
+admin features:
+add bank account
+delete bank account
+add user
+delete user
+find bank account
+get all bank accounts
+get all users

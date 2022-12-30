@@ -15,7 +15,6 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,12 +28,12 @@ public class GetAllBankAccountsServiceTest {
     @Test
    public void execute() {
         GetAllBankAccountsRequest request = new GetAllBankAccountsRequest();
-        when(bankRepository.findAll()).thenReturn(List.of(new BankAccount("Example", "Example",
+        Mockito.when(bankRepository.findAll()).thenReturn(List.of(new BankAccount("Example", "Example",
                 "000000-00001", null)));
         GetAllBankAccountsResponse response = service.execute(request);
-        assertEquals(response.getBankAccounts().get(0).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(0).getSurname(), "Example");
-        assertEquals(response.getBankAccounts().get(0).getPersonalCode(), "000000-00001");
-        verify(bankRepository).findAll();
+        TestCase.assertEquals(response.getBankAccounts().get(0).getName(), "Example");
+        TestCase.assertEquals(response.getBankAccounts().get(0).getSurname(), "Example");
+        TestCase.assertEquals(response.getBankAccounts().get(0).getPersonalCode(), "000000-00001");
+        Mockito.verify(bankRepository).findAll();
     }
 }

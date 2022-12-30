@@ -62,11 +62,11 @@ public class AcceptanceTest2 {
 
         SearchBankAccountRequest searchRequest = new SearchBankAccountRequest("Example", null,null );
         SearchBankAccountResponse response = searchBankAccountServiceService.execute(searchRequest);
-        assertEquals(2, response.getBankAccounts().size());
-        assertEquals(response.getBankAccounts().get(0).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(0).getSurname(), "ExampleOne");
-        assertEquals(response.getBankAccounts().get(1).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(1).getSurname(), "ExampleTwo");
+        Assert.assertEquals(2, response.getBankAccounts().size());
+        Assert.assertEquals(response.getBankAccounts().get(0).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(0).getSurname(), "ExampleOne");
+        Assert.assertEquals(response.getBankAccounts().get(1).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(1).getSurname(), "ExampleTwo");
     }
 
     @Test
@@ -83,11 +83,11 @@ public class AcceptanceTest2 {
         SearchBankAccountRequest searchRequest = new SearchBankAccountRequest("Example", null,null,
                 ordering);
         SearchBankAccountResponse response = searchBankAccountServiceService.execute(searchRequest);
-        assertEquals(2, response.getBankAccounts().size());
-        assertEquals(response.getBankAccounts().get(0).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(0).getSurname(), "B");
-        assertEquals(response.getBankAccounts().get(1).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(1).getSurname(), "A");
+        Assert.assertEquals(2, response.getBankAccounts().size());
+        Assert.assertEquals(response.getBankAccounts().get(0).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(0).getSurname(), "B");
+        Assert.assertEquals(response.getBankAccounts().get(1).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(1).getSurname(), "A");
     }
 
     @Test
@@ -105,11 +105,11 @@ public class AcceptanceTest2 {
                 ordering);
         SearchBankAccountResponse response = searchBankAccountServiceService.execute(searchRequest);
 
-        assertEquals(2, response.getBankAccounts().size());
-        assertEquals(response.getBankAccounts().get(0).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(0).getSurname(), "A");
-        assertEquals(response.getBankAccounts().get(1).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(1).getSurname(), "B");
+        Assert.assertEquals(2, response.getBankAccounts().size());
+        Assert.assertEquals(response.getBankAccounts().get(0).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(0).getSurname(), "A");
+        Assert.assertEquals(response.getBankAccounts().get(1).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(1).getSurname(), "B");
     }
 
     @Test
@@ -128,8 +128,8 @@ public class AcceptanceTest2 {
                 ordering, paging);
         SearchBankAccountResponse response = searchBankAccountServiceService.execute(searchRequest);
 
-        assertEquals(1, response.getBankAccounts().size());
-        assertEquals(response.getBankAccounts().get(0).getName(), "Example");
-        assertEquals(response.getBankAccounts().get(0).getSurname(), "A");
+        Assert.assertEquals(1, response.getBankAccounts().size());
+        Assert.assertEquals(response.getBankAccounts().get(0).getName(), "Example");
+        Assert.assertEquals(response.getBankAccounts().get(0).getSurname(), "A");
     }
 }

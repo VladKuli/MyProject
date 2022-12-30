@@ -21,7 +21,7 @@ public class SpringContextTest {
 
     @Test
     public void start() {
-        assertNotNull(appContext);
+        TestCase.assertNotNull(appContext);
     }
 
 }

@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class LogInValidatorTest {
 
     private LogInValidator validator = new LogInValidator();
@@ -16,7 +14,7 @@ public class LogInValidatorTest {
     public void testSuccessValidate() {
         LogInRequest request = new LogInRequest("000000-00001","password");
         List<CoreError> errors = validator.validate(request);
-        assertTrue(errors.isEmpty());
+        Assert.assertTrue(errors.isEmpty());
     }
 
 
@@ -24,15 +22,15 @@ public class LogInValidatorTest {
     public void testShouldReturnErrorAboutLogin() {
         LogInRequest request = new LogInRequest("","password");
         List<CoreError> errors = validator.validate(request);
-        assertFalse(errors.isEmpty());
-        assertEquals("Login",errors.get(0).getField());
+        Assert.assertFalse(errors.isEmpty());
+        Assert.assertEquals("Login",errors.get(0).getField());
     }
 
     @Test
     public void testShouldReturnErrorAboutPassword() {
         LogInRequest request = new LogInRequest("000000-00001","");
         List<CoreError> errors = validator.validate(request);
-        assertEquals("Password",errors.get(0).getField());
-        assertEquals("Password cannot be empty",errors.get(0).getMessage());
+        Assert.assertEquals("Password",errors.get(0).getField());
+        Assert.assertEquals("Password cannot be empty",errors.get(0).getMessage());
     }
 }

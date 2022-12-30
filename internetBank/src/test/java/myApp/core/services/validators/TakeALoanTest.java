@@ -17,13 +17,13 @@ public class TakeALoanTest {
     public void successTest(){
         TakeALoanRequest request = new TakeALoanRequest(100);
         List<CoreError> errors = validator.execute(request);
-        assertTrue(errors.isEmpty());
+        Assert.assertTrue(errors.isEmpty());
     }
 
     @Test
     public void shouldReturnErrorAboutValue(){
         TakeALoanRequest request = new TakeALoanRequest(null);
         List<CoreError> errors = validator.execute(request);
-        assertFalse(errors.isEmpty());
+        Assert.assertFalse(errors.isEmpty());
     }
 }

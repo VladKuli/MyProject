@@ -1,6 +1,6 @@
 package myApp.core.services;
 /*
-import myApp.core.database.BankRepository;
+import myApp.myApp.core.database.BankRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
