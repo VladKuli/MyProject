@@ -34,9 +34,7 @@ dependencies {
     testImplementation('org.springframework:spring-test:5.3.23')
     testImplementation('com.h2database:h2:1.4.200')
 
-
     implementation ('org.liquibase:liquibase-core:4.2.2')
-
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -48,3 +46,6 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'application'
+mainClassName = 'myApp.WebBankApplication'
