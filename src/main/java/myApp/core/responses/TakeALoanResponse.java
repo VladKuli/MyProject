@@ -5,15 +5,15 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class TakeALoanResponses extends CoreResponse {
+public class TakeALoanResponse extends CoreResponse {
 
     private boolean isLoanSucceed;
 
-    public TakeALoanResponses(List<CoreError> errors) {
+    public TakeALoanResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public TakeALoanResponses(boolean isLoanSucceed) {
+    public TakeALoanResponse(boolean isLoanSucceed) {
         this.isLoanSucceed = isLoanSucceed;
     }
 }

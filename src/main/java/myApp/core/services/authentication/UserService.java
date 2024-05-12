@@ -11,8 +11,8 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 @Getter
 @Setter
-@Component
-@Transactional
+//@Component
+//@Transactional
 public class UserService {
 
     @Autowired
@@ -38,7 +38,3 @@ public class UserService {
         }
     }
 }
-
-
-
-

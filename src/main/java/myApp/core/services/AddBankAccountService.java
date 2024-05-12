@@ -25,6 +25,7 @@ public class AddBankAccountService {
 
     public AddBankAccountResponse execute(AddBankAccountRequest request) {
         List<CoreError> errors = validator.validate(request);
+
         if (errors.isEmpty()) {
                 BankAccount bankAccount = new BankAccount(request.getName(), request.getSurname(),
                         request.getPersonalCode());

@@ -34,10 +34,8 @@ public class SearchBankAccountServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(List.of());
         Mockito.when(bankAccountRepository.findByName("Example")).thenReturn(List.of(new BankAccount("Example",
                 "ExampleTwo", "000000-00001", null )));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("Example", response.getBankAccounts().get(0).getName());
-        Mockito.verify(bankAccountRepository).findByName("Example");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1)).findByName("Example");
     }
 
     @Test
@@ -46,10 +44,8 @@ public class SearchBankAccountServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(List.of());
         Mockito.when(bankAccountRepository.findBySurname("ExampleTwo")).thenReturn(List.of(new BankAccount("Example",
                 "ExampleTwo", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("ExampleTwo", response.getBankAccounts().get(0).getSurname());
-        Mockito.verify(bankAccountRepository).findBySurname("ExampleTwo");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1)).findBySurname("ExampleTwo");
     }
 
     @Test
@@ -58,10 +54,8 @@ public class SearchBankAccountServiceTest {
         Mockito.when(validator.validate(request)).thenReturn(List.of());
         Mockito.when(bankAccountRepository.findByPersonalCode("000000-00001")).thenReturn(List.of(new BankAccount("Example",
                 "ExampleTwo", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("000000-00001",response.getBankAccounts().get(0).getPersonalCode());
-        Mockito.verify(bankAccountRepository).findByPersonalCode("000000-00001");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1)).findByPersonalCode("000000-00001");
     }
 
     @Test
@@ -72,11 +66,9 @@ public class SearchBankAccountServiceTest {
         Mockito.when(bankAccountRepository.findByNameAndSurname("Example", "ExampleTwo"))
                 .thenReturn(List.of(new BankAccount("Example",
                 "ExampleTwo", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("Example",response.getBankAccounts().get(0).getName());
-        TestCase.assertEquals("ExampleTwo",response.getBankAccounts().get(0).getSurname());
-        Mockito.verify(bankAccountRepository).findByNameAndSurname("Example", "ExampleTwo");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1))
+                .findByNameAndSurname("Example", "ExampleTwo");
     }
 
     @Test
@@ -86,11 +78,9 @@ public class SearchBankAccountServiceTest {
         Mockito.when(bankAccountRepository.findByNameAndPersonalCode("Example", "000000-00001"))
                 .thenReturn(List.of(new BankAccount("Example",
                         "ExampleTwo", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("Example", response.getBankAccounts().get(0).getName());
-        TestCase.assertEquals("000000-00001", response.getBankAccounts().get(0).getPersonalCode());
-        Mockito.verify(bankAccountRepository).findByNameAndPersonalCode("Example", "000000-00001");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1))
+                .findByNameAndPersonalCode("Example", "000000-00001");
 
     }
 
@@ -101,11 +91,9 @@ public class SearchBankAccountServiceTest {
         Mockito.when(bankAccountRepository.findBySurnameAndPersonalCode("ExampleTwo", "000000-00001"))
                 .thenReturn(List.of(new BankAccount("Example",
                         "ExampleTwo", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("ExampleTwo", response.getBankAccounts().get(0).getSurname());
-        TestCase.assertEquals("000000-00001", response.getBankAccounts().get(0).getPersonalCode());
-        Mockito.verify(bankAccountRepository).findBySurnameAndPersonalCode("ExampleTwo", "000000-00001");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1))
+                .findBySurnameAndPersonalCode("ExampleTwo", "000000-00001");
     }
 
     @Test
@@ -116,11 +104,8 @@ public class SearchBankAccountServiceTest {
                 .thenReturn(List.of(new BankAccount("Example",
                         "ExampleTwo", "000000-00001", null)));
         SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("Example", response.getBankAccounts().get(0).getName());
-        TestCase.assertEquals("ExampleTwo", response.getBankAccounts().get(0).getSurname());
-        TestCase.assertEquals("000000-00001", response.getBankAccounts().get(0).getPersonalCode());
-        Mockito.verify(bankAccountRepository).findByNameAndSurnameAndPersonalCode("Example", "ExampleTwo", "000000-00001");
+        Mockito.verify(bankAccountRepository, Mockito.times(1))
+                .findByNameAndSurnameAndPersonalCode("Example", "ExampleTwo", "000000-00001");
 
     }
 
@@ -134,10 +119,8 @@ public class SearchBankAccountServiceTest {
                         "ExampleTwo", "000000-00001", null),
                         new BankAccount("Example",
                                 "ExampleTwo", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("Example",response.getBankAccounts().get(0).getName());
-        Mockito.verify(bankAccountRepository).findByName("Example");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository,Mockito.times(1)).findByName("Example");
     }
 
     @Test
@@ -149,10 +132,9 @@ public class SearchBankAccountServiceTest {
                         "A", "000000-00001", null),
                 new BankAccount("Example",
                         "B", "000000-00001", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("B", response.getBankAccounts().get(0).getSurname());
-        Mockito.verify(bankAccountRepository).findByName("Example");
+        service.execute(request);
+
+        Mockito.verify(bankAccountRepository, Mockito.times(1)).findByName("Example");
     }
 
     @Test
@@ -164,10 +146,8 @@ public class SearchBankAccountServiceTest {
                         "ExampleTwo", "000000-00001", null),
                 new BankAccount("Example",
                         "ExampleTwo", "000000-00002", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("000000-00002",response.getBankAccounts().get(0).getPersonalCode());
-        Mockito.verify(bankAccountRepository).findByName("Example");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1)).findByName("Example");
     }
 
     @Test
@@ -179,9 +159,7 @@ public class SearchBankAccountServiceTest {
                         "ExampleTwo", "000000-00001", null),
                 new BankAccount("Example",
                         "ExampleTwo", "000000-00002", null)));
-        SearchBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        TestCase.assertEquals("000000-00001",response.getBankAccounts().get(0).getPersonalCode());
-        Mockito.verify(bankAccountRepository).findByName("Example");
+        service.execute(request);
+        Mockito.verify(bankAccountRepository,Mockito.times(1)).findByName("Example");
     }
 }

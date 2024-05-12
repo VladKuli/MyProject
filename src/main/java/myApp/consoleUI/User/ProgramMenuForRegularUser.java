@@ -1,11 +1,12 @@
-package myApp.consoleUI;
+package myApp.consoleUI.User;
 
+import myApp.consoleUI.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Component
+//@Component
 public class ProgramMenuForRegularUser {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
@@ -17,9 +18,8 @@ public class ProgramMenuForRegularUser {
         menuNumberToUIActionMap.put(2, findUIAction(uiActions, OpenAccountUIAction.class));
         menuNumberToUIActionMap.put(3, findUIAction(uiActions, CloseAccountUIAction.class));
         menuNumberToUIActionMap.put(4, findUIAction(uiActions, SeeYourAccountUIAction.class));
-       // menuNumberToUIActionMap.put(4, findUIAction(uiActions, takeALoan.class));
+        menuNumberToUIActionMap.put(4, findUIAction(uiActions, TakeALoanUIAction.class));
         menuNumberToUIActionMap.put(5, findUIAction(uiActions, SwitchUserUIAction.class));
-       // menuNumberToUIActionMap.put(6, findUIAction(uiActions, ExitUIAction.class));
     }
 
      public void printInformationForRegularUser() {
@@ -29,9 +29,9 @@ public class ProgramMenuForRegularUser {
         System.out.println("2 - Open an account");
         System.out.println("3 - Close an account");
         System.out.println("4 - See your account");
-        // System.out.println("Take a loan");//need to add
-        System.out.println("5 - Switch user");
-        System.out.println("6 - Exit");
+        System.out.println("5Take a loan");
+        System.out.println("6 - Switch user");
+        System.out.println("7 - Exit");
     }
 
     public int userChoice() {

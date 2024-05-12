@@ -1,5 +1,6 @@
-package myApp.consoleUI;
+package myApp.consoleUI.User;
 
+import myApp.consoleUI.UIAction;
 import myApp.core.requests.MoneyTransferRequest;
 import myApp.core.responses.MoneyTransferResponse;
 import myApp.core.services.MoneyTransferService;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@Component
+//@Component
 public class MoneyTransferUIAction implements UIAction {
     @Autowired
     private MoneyTransferService service;
@@ -18,13 +19,12 @@ public class MoneyTransferUIAction implements UIAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        String yourPersonalCode = userService.getPersonalCode();
         System.out.println("Enter another personal code");
         String anotherPersonalCode = scanner.nextLine();
         System.out.println("Enter value: ");
         int value = scanner.nextInt();
 
-        MoneyTransferRequest request = new MoneyTransferRequest(yourPersonalCode, anotherPersonalCode, value);
+        MoneyTransferRequest request = new MoneyTransferRequest(anotherPersonalCode, value);
         MoneyTransferResponse response = service.execute(request);
 
         if (response.hasErrors()) {

@@ -1,9 +1,11 @@
-package myApp.consoleUI;
+package myApp.consoleUI.Admin;
 
+import myApp.consoleUI.UIAction;
 import myApp.core.requests.AddBankAccountRequest;
 import myApp.core.requests.AddUserRequest;
 import myApp.core.responses.AddBankAccountResponse;
 import myApp.core.responses.AddUserResponse;
+import myApp.core.responses.CoreError;
 import myApp.core.services.AddBankAccountService;
 import myApp.core.services.AddUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.Base64;
 import java.util.Scanner;
 
-@Component
+//@Component
 public class AddBankAccountUIAction implements UIAction {
     @Autowired
     private AddBankAccountService service;
@@ -31,6 +33,7 @@ public class AddBankAccountUIAction implements UIAction {
         String surname = scanner.nextLine();
         System.out.println("Enter personal code: ");
         String personalCode = scanner.nextLine();
+
         String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
         String encodedLogin = Base64.getEncoder().encodeToString(login.getBytes());
 
@@ -52,8 +55,8 @@ public class AddBankAccountUIAction implements UIAction {
             }
         }
         if (response.hasErrors()) {
-            response.getErrors().forEach(coreError -> System.out.println("Error: "
-                    + coreError.getField() + " " + coreError.getMessage()));
+            response.getErrors().stream().map(coreError -> "Error: "
+                    + coreError.getField() + " " + coreError.getMessage()).forEach(System.out::println);
         } else {
             if (responseUser.getUser() != null) {
                 System.out.println("User has been added");

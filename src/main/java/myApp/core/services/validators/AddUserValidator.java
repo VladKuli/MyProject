@@ -32,10 +32,10 @@ public class AddUserValidator {
 
     private Optional<CoreError> validatePersonalCode(AddUserRequest request) {
         return request.getPersonalCode() != null
-                && !request.getPersonalCode().isBlank()
+                &&request.getPersonalCode().length() == 12
                 ? Optional.empty()
-                : Optional.of(new CoreError("Field: Personal code ",
-                "Personal code can only contain letters and must not be empty"));
+                : Optional.of(new CoreError("Field: Personal code",
+                "  Wrong personal code"));
     }
 
     private Optional<CoreError> validatePassword(AddUserRequest request) {
@@ -43,14 +43,14 @@ public class AddUserValidator {
                 && !request.getPassword().isBlank()
                 ? Optional.empty()
                 : Optional.of(new CoreError("Field: Password ",
-                "Password can only contain letters and must not be empty"));
+                "   Password must not be empty"));
     }
 
     private Optional<CoreError> duplicateCheckResult(AddUserRequest request) {
         return !duplicateCheck(request)
                 ? Optional.empty()
                 : Optional.of(new CoreError("Duplicate,",
-                "this user already exists"));
+                " this user already exists"));
     }
 
     private boolean duplicateCheck(AddUserRequest request) {

@@ -3,7 +3,7 @@ package myApp.core.services;
 import myApp.core.database.jpa.JpaBankAccountRepository;
 import myApp.core.requests.TakeALoanRequest;
 import myApp.core.responses.CoreError;
-import myApp.core.responses.TakeALoanResponses;
+import myApp.core.responses.TakeALoanResponse;
 import myApp.core.services.validators.TakeALoanValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,19 +22,18 @@ public class TakeALoanService {
     @Autowired
     private TakeALoanValidator validator;
 
-    public TakeALoanResponses execute(TakeALoanRequest request) {
+    public TakeALoanResponse execute(TakeALoanRequest request) {
         List<CoreError> errors = validator.execute(request);
         if (errors.isEmpty()) {
             bankAccountRepository.takeALoan(getUsername(), request.getValue());
-            return new TakeALoanResponses(true);
+            return new TakeALoanResponse(true);
         } else {
-            return new TakeALoanResponses(errors);
+            return new TakeALoanResponse(errors);
         }
     }
 
     private String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        return username;
+        return authentication.getName();
     }
 }

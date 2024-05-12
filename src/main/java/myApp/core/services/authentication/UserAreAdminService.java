@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-@Component
-@Transactional
+//@Component
+//@Transactional
 public class UserAreAdminService {
 
     @Autowired

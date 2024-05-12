@@ -26,6 +26,7 @@ public class AddUserService {
 
     public AddUserResponse execute(AddUserRequest request) {
         List<CoreError> errors = validator.validate(request);
+
         if (errors.isEmpty()) {
             User user = new User(encoder.executeEncode(request.getPersonalCode()), encoder.executeEncode("{noop}" +request.getPassword()),
                     encoder.executeEncode("Role_User"));

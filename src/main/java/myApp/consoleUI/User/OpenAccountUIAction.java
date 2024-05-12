@@ -1,6 +1,7 @@
-package myApp.consoleUI;
+package myApp.consoleUI.User;
 
 
+import myApp.consoleUI.UIAction;
 import myApp.core.requests.OpenAccountRequest;
 import myApp.core.responses.OpenAccountResponse;
 import myApp.core.services.OpenAccountService;
@@ -8,7 +9,7 @@ import myApp.core.services.authentication.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class OpenAccountUIAction implements UIAction {
     @Autowired
     private OpenAccountService service;

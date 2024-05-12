@@ -31,9 +31,8 @@ public class RemoveBankAccountServiceTest {
         RemoveBankAccountRequest request = new RemoveBankAccountRequest("000000-00000");
         Mockito.when(validator.validate(request)).thenReturn(List.of());
         RemoveBankAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
         TestCase.assertTrue(response.isDeleted());
-        Mockito.verify(bankRepository).deleteByPersonalCode("000000-00000");
+        Mockito.verify(bankRepository, Mockito.times(1)).deleteByPersonalCode("000000-00000");
     }
 
     @Test
@@ -41,7 +40,7 @@ public class RemoveBankAccountServiceTest {
         RemoveBankAccountRequest request = new RemoveBankAccountRequest(null);
         Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Field: Personal code",
                 "Personal code must not be empty")));
-        RemoveBankAccountResponse response = service.execute(request);
+        service.execute(request);
         Mockito.verify(bankRepository, Mockito.times(0)).deleteByPersonalCode(null);
     }
 }

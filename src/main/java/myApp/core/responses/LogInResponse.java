@@ -16,6 +16,4 @@ public class LogInResponse extends CoreResponse {
     public LogInResponse(List<CoreError> errors) {
         super(errors);
     }
-
-
 }

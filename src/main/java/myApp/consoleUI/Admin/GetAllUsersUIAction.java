@@ -1,12 +1,13 @@
-package myApp.consoleUI;
+package myApp.consoleUI.Admin;
 
+import myApp.consoleUI.UIAction;
 import myApp.core.requests.GetAllUsersRequest;
 import myApp.core.responses.GetAllUsersResponse;
 import myApp.core.services.GetAllUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class GetAllUsersUIAction implements UIAction {
 
     @Autowired

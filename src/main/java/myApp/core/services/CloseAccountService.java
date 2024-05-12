@@ -21,6 +21,7 @@ public class CloseAccountService {
 
     public CloseAccountResponse execute(CloseAccountRequest request) {
         List<CoreError> errors = validator.validate(request);
+
         if (errors.isEmpty()) {
             if (accountNullCheck(request.getPersonalCode())) {
                 bankRepository.closeAccount(request.getPersonalCode());

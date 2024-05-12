@@ -35,10 +35,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginProcessingUrl("/login")
                     .successHandler(myAuthenticationSuccessHandler())
                 .permitAll();
-
-
-
-
     }
 
     @Bean

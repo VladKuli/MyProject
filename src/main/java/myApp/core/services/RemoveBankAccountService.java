@@ -22,6 +22,7 @@ public class RemoveBankAccountService {
 
     public RemoveBankAccountResponse execute(RemoveBankAccountRequest request) {
         List<CoreError> errors = validator.validate(request);
+
         if (errors.isEmpty()) {
             bankRepository.deleteByPersonalCode(request.getPersonalCode());
             return new RemoveBankAccountResponse(true);

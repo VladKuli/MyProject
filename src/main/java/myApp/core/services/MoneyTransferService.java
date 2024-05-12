@@ -34,7 +34,6 @@ public class MoneyTransferService {
 
     private String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        return username;
+        return authentication.getName();
     }
 }

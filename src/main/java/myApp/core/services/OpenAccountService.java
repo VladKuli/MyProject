@@ -22,6 +22,7 @@ public class OpenAccountService {
 
     public OpenAccountResponse execute(OpenAccountRequest request) {
         List<CoreError> errors = validator.validate(request);
+
         if (errors.isEmpty()) {
             if (accountNullCheck(request.getPersonalCode())) {
                 bankRepository.openAccount(request.getPersonalCode());

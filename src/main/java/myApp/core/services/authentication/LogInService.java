@@ -1,6 +1,7 @@
 package myApp.core.services.authentication;
 
 import myApp.core.database.BankAccountRepository;
+import myApp.core.database.jpa.JpaBankAccountRepository;
 import myApp.core.domain.BankAccount;
 import myApp.core.requests.LogInRequest;
 import myApp.core.responses.CoreError;
@@ -14,8 +15,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 
-@Component
-@Transactional
+//@Component
+//@Transactional
 public class LogInService {
 
     @Autowired
@@ -23,7 +24,7 @@ public class LogInService {
     @Autowired
     private LogInValidator validator;
     @Autowired
-    private BankAccountRepository bankAccountRepository;
+    private JpaBankAccountRepository bankAccountRepository;
 
     public LogInResponse execute(LogInRequest request) {
         List<CoreError> errors = validator.validate(request);

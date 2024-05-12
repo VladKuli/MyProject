@@ -1,11 +1,13 @@
 package myApp.consoleUI;
 
+import myApp.consoleUI.Admin.ProgramMenuForAdmin;
+import myApp.consoleUI.User.ProgramMenuForRegularUser;
 import myApp.core.services.authentication.UserAreAdminService;
 import myApp.core.services.authentication.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class AdminOrRegularUserMenu {
 
 

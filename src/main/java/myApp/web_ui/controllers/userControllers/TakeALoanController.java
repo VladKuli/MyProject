@@ -1,7 +1,7 @@
 package myApp.web_ui.controllers.userControllers;
 
 import myApp.core.requests.TakeALoanRequest;
-import myApp.core.responses.TakeALoanResponses;
+import myApp.core.responses.TakeALoanResponse;
 import myApp.core.services.TakeALoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class TakeALoanController {
     @PostMapping(value = "/takeALoan")
     public String takeALoanPageProcess(@ModelAttribute(value = "request") TakeALoanRequest request,
                                        ModelMap modelMap) {
-        TakeALoanResponses responses = service.execute(request);
+        TakeALoanResponse responses = service.execute(request);
         if (responses.hasErrors()) {
             return "takeALoan";
         } else {

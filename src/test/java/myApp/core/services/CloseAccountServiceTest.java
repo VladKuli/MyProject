@@ -28,10 +28,10 @@ public class CloseAccountServiceTest {
 
 
     @Test
-    public void testCloseAccountWithoutErrors() {
+    public void shouldCloseAccountSuccessfully() {
         CloseAccountRequest request = new CloseAccountRequest("000000-00001");
         Mockito.when(validator.validate(request)).thenReturn(List.of());
-        CloseAccountResponse response = service.execute(request);
+        service.execute(request);
         Mockito.verify(bankRepository, Mockito.times(0)).closeAccount("000000-00001");
     }
 

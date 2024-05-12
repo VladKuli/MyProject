@@ -1,10 +1,11 @@
 package myApp.core.responses;
 
 
+import lombok.Getter;
 import myApp.core.domain.BankAccount;
 
 import java.util.List;
-
+@Getter
 public class AddBankAccountResponse extends CoreResponse {
 
     private BankAccount bankAccount;
@@ -15,9 +16,5 @@ public class AddBankAccountResponse extends CoreResponse {
 
     public AddBankAccountResponse(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
-    }
-
-    public BankAccount getBankAccount() {
-        return bankAccount;
     }
 }

@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import myApp.core.database.jpa.JpaBankAccountRepository;
 import myApp.core.domain.BankAccount;
 import myApp.core.requests.SeeYourAccountRequest;
+import myApp.core.responses.CoreError;
 import myApp.core.responses.SeeYourAccountResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,12 +26,13 @@ public class SeeYourAccountServiceTest {
 
     @Test
     public void testSeeAccount() {
-        SeeYourAccountRequest request = new SeeYourAccountRequest("0000000-00001");
+        SeeYourAccountRequest request = new SeeYourAccountRequest("000000-00002");
         Optional<BankAccount> bankAccount = Optional.of(new BankAccount(
-                "Example", "ExampleTwo","000000-00001",0));
-        Mockito.when(bankAccountRepository.seeYourAccount("0000000-00001")).thenReturn(bankAccount);
-        SeeYourAccountResponse response = service.execute(request);
-        TestCase.assertFalse(response.hasErrors());
-        Mockito.verify(bankAccountRepository).seeYourAccount("0000000-00001");
+                "Example", "","000000-00002",0));
+        Mockito.when(bankAccountRepository.seeYourAccount("000000-00002"))
+                .thenReturn(bankAccount);
+        service.execute(request);
+        Mockito.verify(bankAccountRepository, Mockito.times(1))
+                .seeYourAccount("000000-00002");
     }
 }

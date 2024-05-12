@@ -8,8 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name="bank_accounts")
@@ -41,5 +39,4 @@ public class BankAccount {
         this.surname = surname;
         this.personalCode = personalCode;
     }
-
 }

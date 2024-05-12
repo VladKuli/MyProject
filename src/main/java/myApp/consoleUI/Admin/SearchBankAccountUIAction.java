@@ -1,5 +1,6 @@
-package myApp.consoleUI;
+package myApp.consoleUI.Admin;
 
+import myApp.consoleUI.UIAction;
 import myApp.core.requests.Ordering;
 import myApp.core.requests.Paging;
 import myApp.core.requests.SearchBankAccountRequest;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
-@Component
+//@Component
 public class SearchBankAccountUIAction implements UIAction {
 
     @Autowired

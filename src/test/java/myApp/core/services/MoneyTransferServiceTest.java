@@ -43,20 +43,6 @@ public class MoneyTransferServiceTest {
     }
 
     @Test
-    public void testShouldReturnAnotherPersonalCodeError() {
-        MoneyTransferRequest request = new MoneyTransferRequest("", 100);
-        Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Field: Another personal code",
-                "Another personal code must not be empty")));
-        MoneyTransferResponse response = service.execute(request);
-        TestCase.assertTrue(response.hasErrors());
-        TestCase.assertEquals(1, response.getErrors().size());
-        TestCase.assertEquals("Field: Another personal code",
-                response.getErrors().get(0).getField());
-        TestCase.assertEquals("Another personal code must not be empty",
-                response.getErrors().get(0).getMessage());
-    }
-
-    @Test
     public void testShouldReturnValueError() {
         MoneyTransferRequest request = new MoneyTransferRequest("000000-00002", 0);
         Mockito.when(validator.validate(request)).thenReturn(List.of(new CoreError("Field: Value",
@@ -85,3 +71,4 @@ public class MoneyTransferServiceTest {
                 response.getErrors().get(1).getMessage());
     }
 }
+

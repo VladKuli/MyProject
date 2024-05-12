@@ -12,8 +12,6 @@ import java.util.Collection;
 
 
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
 @Entity
 @Table(name="users")

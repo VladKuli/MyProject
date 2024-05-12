@@ -33,6 +33,6 @@ public class GetAllBankAccountsServiceTest {
         TestCase.assertEquals(response.getBankAccounts().get(0).getName(), "Example");
         TestCase.assertEquals(response.getBankAccounts().get(0).getSurname(), "Example");
         TestCase.assertEquals(response.getBankAccounts().get(0).getPersonalCode(), "000000-00001");
-        Mockito.verify(bankRepository).findAll();
+        Mockito.verify(bankRepository,Mockito.times(1)).findAll();
     }
 }
