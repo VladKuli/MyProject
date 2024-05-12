@@ -1,21 +1,20 @@
 package myApp.core.services.authentication;
 
-import myApp.core.database.BankRepository;
 import myApp.core.database.UserRepository;
 import myApp.core.domain.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import javax.transaction.Transactional;
 
 import java.util.Optional;
-@Setter
 @Getter
-//@Componentomponent
-//@Transactionalnsactional
+@Setter
+@Component
+@Transactional
 public class UserService {
 
-    @Autowired
-    private BankRepository bankRepository;
     @Autowired
     private UserRepository userRepository;
 
@@ -39,3 +38,7 @@ public class UserService {
         }
     }
 }
+
+
+
+

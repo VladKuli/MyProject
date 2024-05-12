@@ -1,7 +1,9 @@
 package myApp.core.domain;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +12,8 @@ import java.util.Collection;
 
 
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name="users")
@@ -30,6 +34,11 @@ public class User implements UserDetails {
         this.personalCode = personalCode;
         this.password = password;
         this.role = role;
+    }
+
+    public User(String personalCode, String password){
+        this.personalCode = personalCode;
+        this.password = password;
     }
 
     @Override

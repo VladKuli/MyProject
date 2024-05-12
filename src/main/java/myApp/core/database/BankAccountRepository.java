@@ -4,9 +4,12 @@ import myApp.core.domain.BankAccount;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-//@Component
-//@Transactional
+import javax.transaction.Transactional;
+
+@Component
+@Transactional
 public class BankAccountRepository {
 
     @Autowired
@@ -19,6 +22,10 @@ public class BankAccountRepository {
     public BankAccount getById(Long id) {
         return sessionFactory.getCurrentSession()
                 .get(BankAccount.class, id);
+    }
+    public BankAccount getByPersonalCode(String personalCode) {
+        return sessionFactory.getCurrentSession()
+                .get(BankAccount.class, personalCode);
     }
 
     public boolean openAccount(String personalCode) {

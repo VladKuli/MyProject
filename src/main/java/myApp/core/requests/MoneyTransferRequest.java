@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 public class MoneyTransferRequest {
 
+    private String yourPersonalCode;
     private String anotherPersonalCode;
     private int value;
 }

@@ -7,13 +7,15 @@ import myApp.core.responses.CoreError;
 import myApp.core.responses.LogInResponse;
 import myApp.core.services.validators.LogInValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 
-//@Componentomponent
-//@Transactionalnsactional
+@Component
+@Transactional
 public class LogInService {
 
     @Autowired

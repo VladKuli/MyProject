@@ -1,9 +1,11 @@
 package myApp.consoleUI;
-/*
-import myApp.myApp.core.services.authentication.UserAreAdminService;
-import myApp.myApp.core.services.authentication.UserService;
-import org.springframework.context.ApplicationContext;
 
+import myApp.core.services.authentication.UserAreAdminService;
+import myApp.core.services.authentication.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+
+@Component
 public class AdminOrRegularUserMenu {
 
 
@@ -36,4 +38,6 @@ public class AdminOrRegularUserMenu {
     }
 }
 
- */
+
+
+

@@ -1,18 +1,23 @@
 package myApp.consoleUI;
-/*
-import myApp.myApp.core.requests.AddBankAccountRequest;
-import myApp.myApp.core.requests.AddUserRequest;
-import myApp.myApp.core.responses.AddBankAccountResponse;
-import myApp.myApp.core.services.AddBankAccountService;
+
+import myApp.core.requests.AddBankAccountRequest;
+import myApp.core.requests.AddUserRequest;
+import myApp.core.responses.AddBankAccountResponse;
+import myApp.core.responses.AddUserResponse;
+import myApp.core.services.AddBankAccountService;
+import myApp.core.services.AddUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Base64;
 import java.util.Scanner;
 
-//@Component
+@Component
 public class AddBankAccountUIAction implements UIAction {
     @Autowired
     private AddBankAccountService service;
+    @Autowired
+    private AddUserService userService;
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
@@ -28,9 +33,14 @@ public class AddBankAccountUIAction implements UIAction {
         String personalCode = scanner.nextLine();
         String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
         String encodedLogin = Base64.getEncoder().encodeToString(login.getBytes());
-        AddUserRequest userRequest = new AddUserRequest(encodedLogin, encodedPassword);
+
+
+        AddUserRequest userRequest = new AddUserRequest(encodedLogin, encodedPassword);//
+        AddUserResponse responseUser = userService.execute(userRequest);
+
         AddBankAccountRequest request = new AddBankAccountRequest(name, surname, personalCode);
-        AddBankAccountResponse response = service.execute(request, userRequest);
+        AddBankAccountResponse response = service.execute(request);
+
         if (response.hasErrors()) {
             response.getErrors().forEach(coreError -> System.out.println("Error: "
                     + coreError.getField() + " " + coreError.getMessage()));
@@ -41,7 +51,15 @@ public class AddBankAccountUIAction implements UIAction {
                 System.out.println("Bank account has not been added");
             }
         }
+        if (response.hasErrors()) {
+            response.getErrors().forEach(coreError -> System.out.println("Error: "
+                    + coreError.getField() + " " + coreError.getMessage()));
+        } else {
+            if (responseUser.getUser() != null) {
+                System.out.println("User has been added");
+            } else {
+                System.out.println("User has not been added");
+            }
+        }
     }
 }
-
- */

@@ -1,11 +1,15 @@
 package myApp.core.domain;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name="bank_accounts")
@@ -24,6 +28,7 @@ public class BankAccount {
     @Column(name="balance")
     private Integer balance;
 
+
     public BankAccount(String name, String surname, String personalCode, Integer balance) {
         this.name = name;
         this.surname = surname;
@@ -36,4 +41,5 @@ public class BankAccount {
         this.surname = surname;
         this.personalCode = personalCode;
     }
+
 }

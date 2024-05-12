@@ -3,12 +3,12 @@ package myApp.core.database;
 import myApp.core.domain.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-
-//@Component
-//@Transactional
+@Component
 public class UserRepository {
 
 

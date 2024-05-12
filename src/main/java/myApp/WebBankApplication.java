@@ -1,6 +1,6 @@
 package myApp;//import myApp.myApp.consoleUI.AdminOrRegularUserMenu;
 
-import myApp.consoleUI.LogInUIAction;
+//import myApp.consoleUI.LogInUIAction;
 import myApp.core.services.authentication.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +15,7 @@ class WebBankApplication {
         SpringApplication.run(SpringWebConfiguration.class);
         //run();
     }
-
+/*
     private static void run() {
         ConfigurableApplicationContext context = SpringApplication.run(SpringWebConfiguration.class);
         logIn(context);
@@ -35,11 +35,13 @@ class WebBankApplication {
     }
 
  */
-
+/*
     private static void logIn(ApplicationContext applicationContext) {
         LogInUIAction uiAction = applicationContext.getBean(LogInUIAction.class);
         uiAction.execute();
     }
+
+ */
 
     private static String getPersonalCode(ApplicationContext applicationContext) {
         UserService userService = applicationContext.getBean(UserService.class);
@@ -48,10 +50,12 @@ class WebBankApplication {
     private static boolean emptyCheckPersonalCode(String personalCode) {
         return personalCode == null || personalCode.isEmpty();
     }
-
+/*
     private static void executeIfUserNotValid(ApplicationContext applicationContext) {
         System.out.println("User not found");
         System.out.println();
         logIn(applicationContext);
     }
+
+ */
 }

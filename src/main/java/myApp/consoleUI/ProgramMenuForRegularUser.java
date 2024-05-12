@@ -1,12 +1,11 @@
 package myApp.consoleUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-//@Component
+import java.util.*;
+
+@Component
 public class ProgramMenuForRegularUser {
 
     private Map<Integer, UIAction> menuNumberToUIActionMap;
@@ -14,12 +13,13 @@ public class ProgramMenuForRegularUser {
     @Autowired
     public ProgramMenuForRegularUser(List<UIAction> uiActions) {
         menuNumberToUIActionMap = new HashMap<>();
-       // menuNumberToUIActionMap.put(1, findUIAction(uiActions, MoneyTransferUIAction.class));
-      //  menuNumberToUIActionMap.put(2, findUIAction(uiActions, OpenAccountUIAction.class));
-       // menuNumberToUIActionMap.put(3, findUIAction(uiActions, CloseAccountUIAction.class));
-       // menuNumberToUIActionMap.put(4, findUIAction(uiActions, SeeYourAccountUIAction.class));
+        menuNumberToUIActionMap.put(1, findUIAction(uiActions, MoneyTransferUIAction.class));
+        menuNumberToUIActionMap.put(2, findUIAction(uiActions, OpenAccountUIAction.class));
+        menuNumberToUIActionMap.put(3, findUIAction(uiActions, CloseAccountUIAction.class));
+        menuNumberToUIActionMap.put(4, findUIAction(uiActions, SeeYourAccountUIAction.class));
+       // menuNumberToUIActionMap.put(4, findUIAction(uiActions, takeALoan.class));
         menuNumberToUIActionMap.put(5, findUIAction(uiActions, SwitchUserUIAction.class));
-        menuNumberToUIActionMap.put(6, findUIAction(uiActions, ExitUIAction.class));
+       // menuNumberToUIActionMap.put(6, findUIAction(uiActions, ExitUIAction.class));
     }
 
      public void printInformationForRegularUser() {
@@ -41,9 +41,13 @@ public class ProgramMenuForRegularUser {
     }
 
     private UIAction findUIAction(List<UIAction> uiActions, Class uiActionClass) {
-        return uiActions.stream()
-                .filter(uiAction -> uiAction.getClass().equals(uiActionClass))
-                .findFirst()
+        for (UIAction uiAction : uiActions) {
+            if (uiAction.getClass().equals(uiActionClass)) {
+                return Optional.of(uiAction)
+                        .get();
+            }
+        }
+        return Optional.<UIAction>empty()
                 .get();
     }
 

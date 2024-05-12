@@ -1,6 +1,8 @@
 package myApp.consoleUI;
+/*
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class ExitUIAction implements UIAction {
 
     @Override
@@ -9,3 +11,5 @@ public class ExitUIAction implements UIAction {
         System.exit(0);
     }
 }
+
+ */

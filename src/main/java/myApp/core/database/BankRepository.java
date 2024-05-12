@@ -2,6 +2,7 @@ package myApp.core.database;
 
 import myApp.core.domain.BankAccount;
 import myApp.core.domain.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;

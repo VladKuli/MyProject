@@ -5,12 +5,12 @@ import myApp.core.domain.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-//@Component
-//@Transactional
 public class OrmBankRepositoryImpl implements BankRepository {
 
     @Autowired
