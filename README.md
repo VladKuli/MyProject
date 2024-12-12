@@ -1,3 +1,2 @@
-Hello! Here is my bank project. This is my the biggest project at this time.
-My project has features, which every bank should have, like: transactions, loans, information about bank account.
-In this project I used all dependencies, which should be in web-development.
+Hello! I am excited to present my bank project, which represents the most comprehensive project I have undertaken so far. This project incorporates all the essential features expected in a modern banking system, such as transaction management, loan handling, and detailed information about bank accounts.
+In developing this project, I have utilized a full range of dependencies and tools that are standard in web development, ensuring a robust and efficient implementation. This project not only demonstrates my technical skills but also highlights my ability to design and execute a complete, functional application.
